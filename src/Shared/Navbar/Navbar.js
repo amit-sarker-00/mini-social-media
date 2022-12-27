@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SiMediafire } from "react-icons/si";
 import { RiNotification2Line } from "react-icons/ri";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const handelLogOut = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
   const menuBar = (
     <>
       <li className="  text-white">
@@ -84,16 +91,25 @@ const Navbar = () => {
       <div className="navbar-end">
         <button className="flex items-center mr-2">
           <RiNotification2Line className="w-6 h-6 text-white"></RiNotification2Line>
-          <div className=" badge text-orange-500 font-bold -mt-5 bg-white">
-            +9
-          </div>
         </button>
-        <Link
-          to="/login"
-          className=" py-1 md:py-2 px-2 md:px-3 text-white font-extrabold font-mono rounded-sm border hover:bg-white hover:text-blue-700"
-        >
-          LOGIN
-        </Link>
+        <>
+          {user?.email ? (
+            <Link
+              to="/"
+              onClick={handelLogOut}
+              className=" py-1 md:py-2 px-2 md:px-3 text-white font-extrabold font-mono rounded-sm border hover:bg-white hover:text-blue-700"
+            >
+              LOGOUT
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className=" py-1 md:py-2 px-2 md:px-3 text-white font-extrabold font-mono rounded-sm border hover:bg-white hover:text-blue-700"
+            >
+              LOGIN
+            </Link>
+          )}
+        </>
       </div>
     </div>
   );
