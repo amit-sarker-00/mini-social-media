@@ -13,14 +13,14 @@ const About = () => {
   }, [user?.email]);
 
   return (
-    <div className="max-w-sm mx-auto my-10">
+    <div className="max-w-sm mx-auto my-10 hover:border hover:border-blue-500 rounded-xl hover:shadow-2xl">
       <Card>
         <div className="flex justify-end px-4 pt-4">
           <h1 className="font-bold">Edit</h1>
         </div>
         <div className="flex flex-col items-center pb-10">
           <img
-            className="mb-3 h-24 w-24 rounded-full shadow-lg"
+            className="mb-3 h-28 w-28 rounded-full shadow-lg"
             src={photoURL}
             title={name}
             alt={name}
