@@ -20,7 +20,14 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
       { path: "/message", element: <Message></Message> },
-      { path: "/newPost", element: <NewPost></NewPost> },
+      {
+        path: "/newPost",
+        element: (
+          <PrivateRoute>
+            <NewPost></NewPost>
+          </PrivateRoute>
+        ),
+      },
       { path: "/media", element: <Media></Media> },
       {
         path: "/about",

@@ -1,3 +1,4 @@
+import { Avatar } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -20,11 +21,16 @@ const Media = () => {
           className="flex flex-col w-80 md:w-96 p-6 space-y-6 overflow-hidden rounded-lg dark:bg-gray-900 dark:text-gray-100 mx-auto my-8 shadow-2xl"
         >
           <div className="flex space-x-4">
-            <img
-              alt=""
-              src={post?.userImage}
-              className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
-            />
+            {post.userImage ? (
+              <img
+                alt=""
+                src={post?.userImage}
+                className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
+              />
+            ) : (
+              <Avatar className="w-12 h-12 rounded-full" rounded={true} />
+            )}
+
             <div className="flex flex-col space-y-1">
               <Link to="/about" className="text-sm font-semibold">
                 {post?.name}

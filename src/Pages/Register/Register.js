@@ -61,7 +61,7 @@ const Registration = () => {
         />
         <input
           className="border bg-white text-gray-400 border-blue-700 p-2 w-80"
-          {...register("photoURL", { required: "photoURL is Required" })}
+          {...register("photoURL")}
           placeholder="photoURL"
         />
         <input

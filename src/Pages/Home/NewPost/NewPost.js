@@ -64,7 +64,7 @@ const NewPost = () => {
         onSubmit={handleSubmit(handelCreatePost)}
       >
         <textarea
-          className="border bg-white  border-blue-700 p-6 w-auto md:w-80"
+          className="border bg-white  border-blue-700 p-6 w-auto sm:w-80"
           {...register("textarea")}
           placeholder="Write Something here..."
         />
@@ -72,14 +72,14 @@ const NewPost = () => {
         <div className="mx-5">
           <input
             type="file"
-            className="border bg-white border-blue-700 p-2 w-52 md:w-full "
+            className="border bg-white border-blue-700 p-2 w-52 sm:w-full "
             {...register("image", { required: "image is Required" })}
             placeholder="image"
           />
         </div>
 
         <div className="mx-5">
-          <button className="btn rounded-md p-2 w-52 md:w-full  bg-blue-700 text-white font-bold hover:bg-blue-400">
+          <button className="btn rounded-md p-2 w-52 sm:w-80 bg-blue-700 text-white font-bold hover:bg-blue-400">
             Post
           </button>
         </div>

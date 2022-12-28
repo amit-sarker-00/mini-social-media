@@ -1,4 +1,4 @@
-import { Card, Dropdown } from "flowbite-react";
+import { Avatar, Card } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -6,6 +6,7 @@ const About = () => {
   const { user } = useContext(AuthContext);
   const [myInfo, setMyInfo] = useState("");
   const { name, email, photoURL } = myInfo;
+  console.log(myInfo);
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
@@ -19,12 +20,17 @@ const About = () => {
           <h1 className="font-bold">Edit</h1>
         </div>
         <div className="flex flex-col items-center pb-10">
-          <img
-            className="mb-3 h-28 w-28 rounded-full shadow-lg"
-            src={photoURL}
-            title={name}
-            alt={name}
-          />
+          {user?.photoURL ? (
+            <img
+              className="mb-3 h-28 w-28 rounded-full shadow-lg"
+              src={photoURL}
+              title={name}
+              alt={name}
+            />
+          ) : (
+            <Avatar className="h-28 w-28 border rounded-full" rounded={true} />
+          )}
+
           <h5 className="mb-1 text-xl font-extrabold text-gray-900 dark:text-white">
             {name}
           </h5>
