@@ -1,0 +1,15 @@
+.file-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-input label {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .file-input label {
+    font-size: 1.2rem;
+  }
+}
