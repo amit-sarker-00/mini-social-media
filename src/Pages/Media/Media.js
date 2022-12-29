@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 const Media = () => {
   const [posts, setPosts] = useState([]);
-
   useEffect(() => {
-    fetch("http://localhost:5000/posts")
+    fetch("https://mini-social-media-server.vercel.app/posts")
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);

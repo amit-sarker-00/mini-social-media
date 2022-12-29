@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const UpdateUserInfo = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
   const [update, setUpdate] = useState("");
   const params = useParams();
@@ -15,13 +16,16 @@ const UpdateUserInfo = () => {
       email: data.email,
       photoURL: data.photURL,
     };
-    fetch(`http://localhost:5000/editAbout/${params?.id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(update),
-    })
+    fetch(
+      `https://mini-social-media-server.vercel.app/editAbout/${params?.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(update),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -29,6 +33,7 @@ const UpdateUserInfo = () => {
           toast.success("Updated Successfully");
           console.log(data);
           setUpdate(data);
+          navigate("/about");
           reset();
         }
       });

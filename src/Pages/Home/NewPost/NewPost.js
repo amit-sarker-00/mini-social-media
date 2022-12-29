@@ -13,7 +13,7 @@ const NewPost = () => {
   const [myInfo, setMyInfo] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://mini-social-media-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyInfo(data));
   }, [user?.email]);
@@ -39,7 +39,7 @@ const NewPost = () => {
             name: myInfo?.name,
             userImage: myInfo.photoURL,
           };
-          fetch("http://localhost:5000/createPost", {
+          fetch("https://mini-social-media-server.vercel.app/createPost", {
             method: "POST",
             headers: {
               "content-type": "application/json",

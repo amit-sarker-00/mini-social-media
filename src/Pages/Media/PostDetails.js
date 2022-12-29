@@ -6,14 +6,14 @@ const PostDetails = () => {
   const [details, setDetails] = useState("");
   const params = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/details/${params?.id}`)
+    fetch(`https://mini-social-media-server.vercel.app/details/${params?.id}`)
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, []);
   return (
     <div>
       <h1 className="font-extrabold text-center text-2xl my-6 lg:text-4xl">
-        Post Details of {details.name} Post
+        Post Details of {details.name}
       </h1>
       <hr className="h-2 w-96 mx-auto" />
       <div

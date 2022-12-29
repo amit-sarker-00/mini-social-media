@@ -8,7 +8,7 @@ const About = () => {
   const [myInfo, setMyInfo] = useState("");
   const { name, email, photoURL } = myInfo;
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://mini-social-media-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyInfo(data));
   }, [user?.email]);

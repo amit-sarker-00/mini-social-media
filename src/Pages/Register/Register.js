@@ -31,7 +31,7 @@ const Registration = () => {
   // post method for register user
   const savedUser = (name, email, photoURL) => {
     const user = { name, email, photoURL };
-    fetch("http://localhost:5000/user", {
+    fetch("https://mini-social-media-server.vercel.app/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
