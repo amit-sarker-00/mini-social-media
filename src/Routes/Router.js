@@ -32,7 +32,14 @@ export const router = createBrowserRouter([
         ),
       },
       { path: "/media", element: <Media></Media> },
-      { path: "/postdetails/:id", element: <PostDetails></PostDetails> },
+      {
+        path: "/postdetails/:id",
+        element: (
+          <PrivateRoute>
+            <PostDetails></PostDetails>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/about",
         element: (
