@@ -1,12 +1,9 @@
 import { Avatar } from "flowbite-react";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Media = () => {
   const [posts, setPosts] = useState([]);
-  const { user } = useContext(AuthContext);
-  console.log(posts);
 
   useEffect(() => {
     fetch("http://localhost:5000/posts")
@@ -18,7 +15,10 @@ const Media = () => {
       {posts?.map((post) => (
         <div
           key={post._id}
-          className="flex flex-col w-80 md:w-96 p-6 space-y-6 overflow-hidden rounded-lg dark:bg-gray-900 dark:text-gray-100 mx-auto my-8 shadow-2xl"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="500"
+          className="flex flex-col w-80 md:w-96 p-6 space-y-6 overflow-hidden rounded-lg dark:bg-gray-900 dark:text-gray-100 mx-auto my-8 shadow-2xl border-2"
         >
           <div className="flex space-x-4">
             {post.userImage ? (
@@ -44,10 +44,8 @@ const Media = () => {
               alt=""
               className="object-cover w-full sm:w-96 mb-4 h-52 sm:h-64 dark:bg-gray-500"
             />
-            <h2 className="mb-1 text-xl font-semibold">{post?.details}</h2>
             <p className="text-sm dark:text-gray-400">
-              lorem detraxit nec, ad elit minimum pri. Illum ipsum detracto ne
-              cum. Mundi nemore te ius...
+              {post?.details.slice(0, 50)}
             </p>
           </div>
           <div className="flex flex-wrap justify-between">
@@ -111,6 +109,11 @@ const Media = () => {
                 <span>283</span>
               </button>
             </div>
+            <Link to={`/postdetails/${post._id}`}>
+              <button className="p-1 border bg-blue-700 text-white rounded-sm font-bold">
+                Details
+              </button>
+            </Link>
           </div>
         </div>
       ))}

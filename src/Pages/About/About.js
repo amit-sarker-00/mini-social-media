@@ -1,12 +1,12 @@
 import { Avatar, Card } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const About = () => {
   const { user } = useContext(AuthContext);
   const [myInfo, setMyInfo] = useState("");
   const { name, email, photoURL } = myInfo;
-  console.log(myInfo);
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
@@ -17,7 +17,9 @@ const About = () => {
     <div className="max-w-sm mx-auto my-10 hover:border hover:border-blue-500 rounded-xl hover:shadow-2xl">
       <Card>
         <div className="flex justify-end px-4 pt-4">
-          <h1 className="font-bold">Edit</h1>
+          <Link to={`/update/${myInfo._id}`} className="font-bold">
+            Edit
+          </Link>
         </div>
         <div className="flex flex-col items-center pb-10">
           {user?.photoURL ? (

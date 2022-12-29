@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import About from "../Pages/About/About";
+import UpdateUserInfo from "../Pages/About/UpdateUserInfo";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import NewPost from "../Pages/Home/NewPost/NewPost";
 import Login from "../Pages/Login/Login";
 import Media from "../Pages/Media/Media";
+import PostDetails from "../Pages/Media/PostDetails";
 import Message from "../Pages/Message/Message";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -20,6 +22,7 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
       { path: "/message", element: <Message></Message> },
+      { path: "/update/:id", element: <UpdateUserInfo></UpdateUserInfo> },
       {
         path: "/newPost",
         element: (
@@ -29,6 +32,7 @@ export const router = createBrowserRouter([
         ),
       },
       { path: "/media", element: <Media></Media> },
+      { path: "/postdetails/:id", element: <PostDetails></PostDetails> },
       {
         path: "/about",
         element: (
